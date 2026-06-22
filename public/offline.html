@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050a14" />
+  <title>Offline — World Cup 2026 Tracker</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #050a14;
+      color: #e8ecf4;
+      font-family: system-ui, -apple-system, sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 400px;
+    }
+    .icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #00d4ff, #7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    p {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    button {
+      background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,212,255,0.05));
+      border: 1px solid rgba(0,212,255,0.3);
+      color: #00d4ff;
+      padding: 0.75rem 2rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    button:hover {
+      background: rgba(0,212,255,0.15);
+      border-color: rgba(0,212,255,0.5);
+      transform: translateY(-2px);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">⚽</div>
+    <h1>Kamu Sedang Offline</h1>
+    <p>
+      Tidak ada koneksi internet. Periksa jaringan Anda lalu coba lagi untuk mendapatkan skor terbaru World Cup 2026.
+    </p>
+    <button onclick="window.location.reload()">Coba Lagi</button>
+  </div>
+</body>
+</html>

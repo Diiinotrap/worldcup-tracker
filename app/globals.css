@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border-color);
+  --color-accent: var(--accent);
+  --color-accent-glow: var(--accent-glow);
+  --color-gold: var(--gold);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #050a14;
+  --foreground: #e8ecf4;
+  --surface: #0d1424;
+  --surface-hover: #141d33;
+  --border-color: #1c2844;
+  --accent: #00d4ff;
+  --accent-glow: rgba(0, 212, 255, 0.15);
+  --gold: #fbbf24;
+  --success: #10b981;
+  --danger: #ef4444;
+  --muted: #64748b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  /* PWA safe area support */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Hide scrollbar in standalone PWA */
+@media all and (display-mode: standalone) {
+  ::-webkit-scrollbar { display: none; }
+  body { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Touch-optimized for mobile */
+@media (hover: none) {
+  .glass-card:hover, .spotlight-card:hover {
+    transform: none;
+  }
+  .glass-card:active, .spotlight-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Glow animations */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.25); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out both;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Glass card */
+.glass-card {
+  background: linear-gradient(135deg, rgba(13, 20, 36, 0.9), rgba(13, 20, 36, 0.7));
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Probability bar */
+.prob-bar {
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.prob-bar .home {
+  background: linear-gradient(90deg, #00d4ff, #0099cc);
+  border-radius: 4px 0 0 4px;
+  transition: width 1s ease-out;
+}
+
+.prob-bar .draw {
+  background: linear-gradient(90deg, #475569, #64748b);
+  transition: width 1s ease-out;
+}
+
+.prob-bar .away {
+  background: linear-gradient(90deg, #f97316, #ef4444);
+  border-radius: 0 4px 4px 0;
+  transition: width 1s ease-out;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #00d4ff, #7c3aed, #f97316);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Active tab indicator */
+.tab-active {
+  color: var(--accent);
+  position: relative;
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border-radius: 1px;
+}
+
+/* Trophy icon shimmer */
+.trophy-shimmer {
+  background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Live pulse */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  animation: live-pulse 1.5s ease-in-out infinite;
+}
+
+/* Qualified badge */
+.qualified-badge {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+/* Spotlight card */
+.spotlight-card {
+  background: linear-gradient(135deg, rgba(13, 20, 36, 0.95), rgba(28, 40, 68, 0.8));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00d4ff, #7c3aed, #f97316);
+}
+
+.spotlight-card:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 12px 48px rgba(0, 212, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Group filter chips */
+.chip {
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  color: var(--foreground);
+}
+
+.chip-active {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 212, 255, 0.05));
+  border-color: var(--accent);
+  color: var(--accent);
+}
