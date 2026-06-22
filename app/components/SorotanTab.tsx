@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { spotlightMatches, todayMatches } from "../lib/data";
 import ProbabilityBar from "./ProbabilityBar";
+import Flag from "./Flag";
 
 export default function SorotanTab() {
   return (
@@ -45,7 +46,7 @@ export default function SorotanTab() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex flex-col items-center gap-1 flex-1">
                   <Link href={`/tim/${match.homeCode}`} className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity">
-                    <span className="text-3xl">{match.homeFlag}</span>
+                    <Flag code={match.homeCode} className="w-10 h-7 object-cover shadow-sm mb-1 rounded-[2px]" />
                     <span className="text-sm font-bold">{match.homeCode}</span>
                   </Link>
                   <span className="text-xs text-accent font-mono">
@@ -60,7 +61,7 @@ export default function SorotanTab() {
                 </div>
                 <div className="flex flex-col items-center gap-1 flex-1">
                   <Link href={`/tim/${match.awayCode}`} className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity">
-                    <span className="text-3xl">{match.awayFlag}</span>
+                    <Flag code={match.awayCode} className="w-10 h-7 object-cover shadow-sm mb-1 rounded-[2px]" />
                     <span className="text-sm font-bold">{match.awayCode}</span>
                   </Link>
                   <span className="text-xs text-orange-400 font-mono">
@@ -107,7 +108,7 @@ export default function SorotanTab() {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <Link href={`/tim/${match.homeCode}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                    <span className="text-xl">{match.homeFlag}</span>
+                    <Flag code={match.homeCode} className="w-6 h-4 object-cover shadow-sm rounded-[2px]" />
                     <span className="text-sm font-semibold">{match.homeTeam}</span>
                   </Link>
                 </div>
@@ -115,7 +116,7 @@ export default function SorotanTab() {
                 <div className="flex items-center gap-2">
                   <Link href={`/tim/${match.awayCode}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                     <span className="text-sm font-semibold">{match.awayTeam}</span>
-                    <span className="text-xl">{match.awayFlag}</span>
+                    <Flag code={match.awayCode} className="w-6 h-4 object-cover shadow-sm rounded-[2px]" />
                   </Link>
                 </div>
               </div>

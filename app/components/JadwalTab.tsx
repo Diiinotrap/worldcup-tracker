@@ -4,6 +4,7 @@ import Link from "next/link";
 import { todayMatches, upcomingMatches, formatDate } from "../lib/data";
 import type { Match } from "../lib/data";
 import ProbabilityBar from "./ProbabilityBar";
+import Flag from "./Flag";
 
 export default function JadwalTab() {
   // Combine today + upcoming, group by date
@@ -57,7 +58,7 @@ export default function JadwalTab() {
                 {/* Teams */}
                 <div className="flex items-center justify-between mb-3">
                   <Link href={`/tim/${match.homeCode}`} className="flex items-center gap-3 flex-1 min-w-0 hover:opacity-80 transition-opacity">
-                    <span className="text-2xl flex-shrink-0">{match.homeFlag}</span>
+                    <Flag code={match.homeCode} className="w-7 h-5 object-cover shadow-sm rounded-[2px] flex-shrink-0" />
                     <div className="min-w-0">
                       <p className="text-sm font-bold truncate">{match.homeTeam}</p>
                       <p className="text-xs text-accent font-mono">
@@ -77,7 +78,7 @@ export default function JadwalTab() {
                         {match.awayWinProb}%
                       </p>
                     </div>
-                    <span className="text-2xl flex-shrink-0">{match.awayFlag}</span>
+                    <Flag code={match.awayCode} className="w-7 h-5 object-cover shadow-sm rounded-[2px] flex-shrink-0" />
                   </Link>
                 </div>
 

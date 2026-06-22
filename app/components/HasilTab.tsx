@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { results, formatDate } from "../lib/data";
 import type { Match } from "../lib/data";
+import Flag from "./Flag";
 
 export default function HasilTab() {
   // Group results by date (newest first)
@@ -64,7 +65,7 @@ export default function HasilTab() {
                   {/* Score */}
                   <div className="flex items-center justify-between">
                     <Link href={`/tim/${match.homeCode}`} className="flex items-center gap-2 flex-1 min-w-0 hover:opacity-80 transition-opacity">
-                      <span className="text-xl flex-shrink-0">{match.homeFlag}</span>
+                      <Flag code={match.homeCode} className="w-6 h-4 object-cover shadow-sm rounded-[2px] flex-shrink-0" />
                       <span
                         className={`text-sm font-semibold truncate ${
                           homeWin ? "text-foreground" : "text-muted"
@@ -108,7 +109,7 @@ export default function HasilTab() {
                       >
                         {match.awayTeam}
                       </span>
-                      <span className="text-xl flex-shrink-0">{match.awayFlag}</span>
+                      <Flag code={match.awayCode} className="w-6 h-4 object-cover shadow-sm rounded-[2px] flex-shrink-0" />
                     </Link>
                   </div>
 

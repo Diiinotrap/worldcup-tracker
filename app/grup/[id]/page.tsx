@@ -8,6 +8,7 @@ import {
   formatDate,
 } from "../../lib/data";
 import ProbabilityBar from "../../components/ProbabilityBar";
+import Flag from "../../components/Flag";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -132,7 +133,7 @@ export default async function GroupPage({ params }: { params: Promise<{ id: stri
                       <td className="py-3">
                         <div className="flex items-center gap-2">
                           <Link href={`/tim/${team.code}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                            <span className="text-xl">{team.flag}</span>
+                            <Flag code={team.code} className="w-6 h-4 object-contain shadow-sm rounded-sm" />
                             <span
                               className={`font-semibold ${
                                 isQualified ? "text-foreground hover:text-accent" : "text-muted hover:text-accent"
@@ -201,7 +202,7 @@ export default async function GroupPage({ params }: { params: Promise<{ id: stri
 
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2 flex-1">
-                      <span className="text-xl">{match.homeFlag}</span>
+                      <Flag code={match.homeCode} className="w-6 h-4 object-contain shadow-sm rounded-sm" />
                       <span className="text-sm font-semibold truncate">
                         {match.homeTeam}
                       </span>
@@ -211,7 +212,7 @@ export default async function GroupPage({ params }: { params: Promise<{ id: stri
                       <span className="text-sm font-semibold truncate text-right">
                         {match.awayTeam}
                       </span>
-                      <span className="text-xl">{match.awayFlag}</span>
+                      <Flag code={match.awayCode} className="w-6 h-4 object-contain shadow-sm rounded-sm" />
                     </div>
                   </div>
 
@@ -264,7 +265,7 @@ export default async function GroupPage({ params }: { params: Promise<{ id: stri
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 flex-1">
-                        <span className="text-xl">{match.homeFlag}</span>
+                        <Flag code={match.homeCode} className="w-6 h-4 object-contain shadow-sm rounded-sm" />
                         <span
                           className={`text-sm font-semibold truncate ${
                             homeWin ? "text-foreground" : "text-muted"
@@ -300,7 +301,7 @@ export default async function GroupPage({ params }: { params: Promise<{ id: stri
                         >
                           {match.awayTeam}
                         </span>
-                        <span className="text-xl">{match.awayFlag}</span>
+                        <Flag code={match.awayCode} className="w-6 h-4 object-contain shadow-sm rounded-sm" />
                       </div>
                     </div>
                   </div>

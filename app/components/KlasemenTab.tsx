@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { groups } from "../lib/data";
+import Flag from "./Flag";
 
 const groupLabels = ["Semua", ...groups.map((g) => g.name.replace("Group ", ""))];
 
@@ -99,7 +100,7 @@ export default function KlasemenTab() {
                         <td className="py-2.5">
                           <div className="flex items-center gap-2">
                             <Link href={`/tim/${team.code}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                              <span className="text-lg">{team.flag}</span>
+                              <Flag code={team.code} className="w-5 h-5 object-contain drop-shadow-sm rounded-[1px]" />
                               <span className={`font-semibold ${isQualified ? "text-foreground" : ""}`}>
                                 {team.name}
                               </span>

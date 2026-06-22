@@ -9,6 +9,7 @@ import {
   squads,
 } from "../../lib/data";
 import ProbabilityBar from "../../components/ProbabilityBar";
+import Flag from "../../components/Flag";
 
 export async function generateMetadata({ params }: { params: Promise<{ kode: string }> }) {
   const { kode } = await params;
@@ -121,14 +122,14 @@ export default async function TeamPage({ params }: { params: Promise<{ kode: str
         <section className="animate-slide-up delay-100">
           <div className="glass-card p-6 relative overflow-hidden">
             {/* Dekorasi Background */}
-            <div className="absolute -right-8 -top-8 text-[12rem] opacity-[0.03] select-none pointer-events-none">
-              {teamData.flag}
+            <div className="absolute -right-8 -top-8 opacity-[0.03] select-none pointer-events-none">
+              <Flag code={teamData.code} className="w-[300px] h-[300px] object-cover" />
             </div>
 
             <div className="relative z-10 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
               {/* Bendera & Identitas */}
               <div className="flex flex-col items-center sm:items-start">
-                <span className="text-6xl drop-shadow-2xl mb-2">{teamData.flag}</span>
+                <Flag code={teamData.code} className="w-20 h-14 object-contain drop-shadow-2xl mb-2 rounded-[2px]" />
                 <div className="flex items-center gap-2 mt-2">
                   <span className="text-xs font-bold text-accent bg-accent-glow px-2 py-0.5 rounded-md">
                     Grup {groupId}
@@ -232,7 +233,7 @@ export default async function TeamPage({ params }: { params: Promise<{ kode: str
 
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2 flex-1">
-                      <span className="text-xl">{match.homeFlag}</span>
+                      <Flag code={match.homeCode} className="w-6 h-4 object-contain shadow-sm rounded-sm" />
                       <span className={`text-sm font-semibold truncate ${match.homeCode === teamCode ? "text-accent" : ""}`}>
                         {match.homeTeam}
                       </span>
@@ -242,7 +243,7 @@ export default async function TeamPage({ params }: { params: Promise<{ kode: str
                       <span className={`text-sm font-semibold truncate text-right ${match.awayCode === teamCode ? "text-accent" : ""}`}>
                         {match.awayTeam}
                       </span>
-                      <span className="text-xl">{match.awayFlag}</span>
+                      <Flag code={match.awayCode} className="w-6 h-4 object-contain shadow-sm rounded-sm" />
                     </div>
                   </div>
 
@@ -310,7 +311,7 @@ export default async function TeamPage({ params }: { params: Promise<{ kode: str
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 flex-1">
-                        <span className="text-xl">{match.homeFlag}</span>
+                        <Flag code={match.homeCode} className="w-6 h-4 object-contain shadow-sm rounded-sm" />
                         <span
                           className={`text-sm font-semibold truncate ${
                             match.homeCode === teamCode ? "text-accent" : (homeWin ? "text-foreground" : "text-muted")
@@ -346,7 +347,7 @@ export default async function TeamPage({ params }: { params: Promise<{ kode: str
                         >
                           {match.awayTeam}
                         </span>
-                        <span className="text-xl">{match.awayFlag}</span>
+                        <Flag code={match.awayCode} className="w-6 h-4 object-contain shadow-sm rounded-sm" />
                       </div>
                     </div>
                   </div>
