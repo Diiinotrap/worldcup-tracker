@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { spotlightMatches, todayMatches } from "../lib/data";
 import ProbabilityBar from "./ProbabilityBar";
 
@@ -32,9 +33,9 @@ export default function SorotanTab() {
             >
               {/* Group badge */}
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold text-accent bg-accent-glow px-2 py-0.5 rounded-md">
+                <Link href={`/grup/${match.group}`} className="text-xs font-bold text-accent bg-accent-glow px-2 py-0.5 rounded-md hover:bg-accent/20 transition-colors">
                   Grup {match.group}
-                </span>
+                </Link>
                 <span className="text-xs text-muted">
                   {match.time} ET • {match.city}
                 </span>
@@ -43,8 +44,10 @@ export default function SorotanTab() {
               {/* Teams */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex flex-col items-center gap-1 flex-1">
-                  <span className="text-3xl">{match.homeFlag}</span>
-                  <span className="text-sm font-bold">{match.homeCode}</span>
+                  <Link href={`/tim/${match.homeCode}`} className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity">
+                    <span className="text-3xl">{match.homeFlag}</span>
+                    <span className="text-sm font-bold">{match.homeCode}</span>
+                  </Link>
                   <span className="text-xs text-accent font-mono">
                     {match.homeWinProb}%
                   </span>
@@ -56,8 +59,10 @@ export default function SorotanTab() {
                   </span>
                 </div>
                 <div className="flex flex-col items-center gap-1 flex-1">
-                  <span className="text-3xl">{match.awayFlag}</span>
-                  <span className="text-sm font-bold">{match.awayCode}</span>
+                  <Link href={`/tim/${match.awayCode}`} className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity">
+                    <span className="text-3xl">{match.awayFlag}</span>
+                    <span className="text-sm font-bold">{match.awayCode}</span>
+                  </Link>
                   <span className="text-xs text-orange-400 font-mono">
                     {match.awayWinProb}%
                   </span>
@@ -94,20 +99,24 @@ export default function SorotanTab() {
               className={`glass-card p-4 animate-slide-up delay-${(idx + 1) * 100}`}
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-semibold text-accent">
+                <Link href={`/grup/${match.group}`} className="text-xs font-semibold text-accent hover:underline">
                   Grup {match.group}
-                </span>
+                </Link>
                 <span className="text-xs text-muted">{match.time} ET</span>
               </div>
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-xl">{match.homeFlag}</span>
-                  <span className="text-sm font-semibold">{match.homeTeam}</span>
+                  <Link href={`/tim/${match.homeCode}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    <span className="text-xl">{match.homeFlag}</span>
+                    <span className="text-sm font-semibold">{match.homeTeam}</span>
+                  </Link>
                 </div>
                 <span className="text-xs text-muted font-mono px-2">vs</span>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold">{match.awayTeam}</span>
-                  <span className="text-xl">{match.awayFlag}</span>
+                  <Link href={`/tim/${match.awayCode}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    <span className="text-sm font-semibold">{match.awayTeam}</span>
+                    <span className="text-xl">{match.awayFlag}</span>
+                  </Link>
                 </div>
               </div>
               <ProbabilityBar

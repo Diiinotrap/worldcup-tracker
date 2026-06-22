@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { todayMatches, upcomingMatches, formatDate } from "../lib/data";
 import type { Match } from "../lib/data";
 import ProbabilityBar from "./ProbabilityBar";
@@ -41,9 +42,9 @@ export default function JadwalTab() {
                 {/* Top row: group + time + venue */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-accent bg-accent-glow px-2 py-0.5 rounded-md">
+                    <Link href={`/grup/${match.group}`} className="text-xs font-bold text-accent bg-accent-glow px-2 py-0.5 rounded-md hover:bg-accent/20 transition-colors">
                       Grup {match.group}
-                    </span>
+                    </Link>
                     {date === "2026-06-22" && (
                       <span className="text-[0.6rem] font-bold text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded-md border border-yellow-400/20">
                         HARI INI
@@ -55,7 +56,7 @@ export default function JadwalTab() {
 
                 {/* Teams */}
                 <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <Link href={`/tim/${match.homeCode}`} className="flex items-center gap-3 flex-1 min-w-0 hover:opacity-80 transition-opacity">
                     <span className="text-2xl flex-shrink-0">{match.homeFlag}</span>
                     <div className="min-w-0">
                       <p className="text-sm font-bold truncate">{match.homeTeam}</p>
@@ -63,13 +64,13 @@ export default function JadwalTab() {
                         {match.homeWinProb}%
                       </p>
                     </div>
-                  </div>
+                  </Link>
 
                   <div className="flex flex-col items-center px-4 flex-shrink-0">
                     <span className="text-sm font-bold text-muted">VS</span>
                   </div>
 
-                  <div className="flex items-center gap-3 flex-1 min-w-0 justify-end text-right">
+                  <Link href={`/tim/${match.awayCode}`} className="flex items-center gap-3 flex-1 min-w-0 justify-end text-right hover:opacity-80 transition-opacity">
                     <div className="min-w-0">
                       <p className="text-sm font-bold truncate">{match.awayTeam}</p>
                       <p className="text-xs text-orange-400 font-mono">
@@ -77,7 +78,7 @@ export default function JadwalTab() {
                       </p>
                     </div>
                     <span className="text-2xl flex-shrink-0">{match.awayFlag}</span>
-                  </div>
+                  </Link>
                 </div>
 
                 {/* Probability bar */}

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { results, formatDate } from "../lib/data";
 import type { Match } from "../lib/data";
 
@@ -52,9 +53,9 @@ export default function HasilTab() {
                 <div key={match.id} className="glass-card p-4">
                   {/* Group + Status */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-bold text-accent bg-accent-glow px-2 py-0.5 rounded-md">
+                    <Link href={`/grup/${match.group}`} className="text-xs font-bold text-accent bg-accent-glow px-2 py-0.5 rounded-md hover:bg-accent/20 transition-colors">
                       Grup {match.group}
-                    </span>
+                    </Link>
                     <span className="text-[0.6rem] font-semibold text-success bg-success/10 px-2 py-0.5 rounded-md border border-success/20 uppercase tracking-wider">
                       FT
                     </span>
@@ -62,7 +63,7 @@ export default function HasilTab() {
 
                   {/* Score */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 flex-1 min-w-0">
+                    <Link href={`/tim/${match.homeCode}`} className="flex items-center gap-2 flex-1 min-w-0 hover:opacity-80 transition-opacity">
                       <span className="text-xl flex-shrink-0">{match.homeFlag}</span>
                       <span
                         className={`text-sm font-semibold truncate ${
@@ -71,7 +72,7 @@ export default function HasilTab() {
                       >
                         {match.homeTeam}
                       </span>
-                    </div>
+                    </Link>
 
                     <div className="flex items-center gap-1.5 px-3 flex-shrink-0">
                       <span
@@ -99,7 +100,7 @@ export default function HasilTab() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 flex-1 min-w-0 justify-end">
+                    <Link href={`/tim/${match.awayCode}`} className="flex items-center gap-2 flex-1 min-w-0 justify-end hover:opacity-80 transition-opacity">
                       <span
                         className={`text-sm font-semibold truncate text-right ${
                           awayWin ? "text-foreground" : "text-muted"
@@ -108,7 +109,7 @@ export default function HasilTab() {
                         {match.awayTeam}
                       </span>
                       <span className="text-xl flex-shrink-0">{match.awayFlag}</span>
-                    </div>
+                    </Link>
                   </div>
 
                   {/* Venue */}
