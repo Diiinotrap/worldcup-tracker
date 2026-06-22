@@ -98,10 +98,12 @@ export default function KlasemenTab() {
                         </td>
                         <td className="py-2.5">
                           <div className="flex items-center gap-2">
-                            <span className="text-lg">{team.flag}</span>
-                            <span className={`font-semibold ${isQualified ? "text-foreground" : ""}`}>
-                              {team.name}
-                            </span>
+                            <Link href={`/tim/${team.code}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                              <span className="text-lg">{team.flag}</span>
+                              <span className={`font-semibold ${isQualified ? "text-foreground" : ""}`}>
+                                {team.name}
+                              </span>
+                            </Link>
                             {isQualified && (
                               <span className="qualified-badge">Lolos</span>
                             )}

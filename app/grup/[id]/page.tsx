@@ -129,14 +129,16 @@ export default function GroupPage({ params }: { params: { id: string } }) {
                       </td>
                       <td className="py-3">
                         <div className="flex items-center gap-2">
-                          <span className="text-xl">{team.flag}</span>
-                          <span
-                            className={`font-semibold ${
-                              isQualified ? "text-foreground" : "text-muted hover:text-foreground"
-                            }`}
-                          >
-                            {team.name}
-                          </span>
+                          <Link href={`/tim/${team.code}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                            <span className="text-xl">{team.flag}</span>
+                            <span
+                              className={`font-semibold ${
+                                isQualified ? "text-foreground hover:text-accent" : "text-muted hover:text-accent"
+                              }`}
+                            >
+                              {team.name}
+                            </span>
+                          </Link>
                           {/* Badges */}
                           {isQualified ? (
                             <span className="ml-2 text-[0.6rem] font-bold uppercase tracking-widest text-success bg-success/10 border border-success/20 px-2 py-0.5 rounded-full">
