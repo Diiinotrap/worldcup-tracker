@@ -9,8 +9,9 @@ import {
 } from "../../lib/data";
 import ProbabilityBar from "../../components/ProbabilityBar";
 
-export function generateMetadata({ params }: { params: { kode: string } }) {
-  const teamCode = params.kode.toUpperCase();
+export async function generateMetadata({ params }: { params: Promise<{ kode: string }> }) {
+  const { kode } = await params;
+  const teamCode = kode.toUpperCase();
   let teamName = "Tim";
   for (const group of groups) {
     const t = group.teams.find((t) => t.code === teamCode);
@@ -26,8 +27,9 @@ export function generateMetadata({ params }: { params: { kode: string } }) {
   };
 }
 
-export default function TeamPage({ params }: { params: { kode: string } }) {
-  const teamCode = params.kode.toUpperCase();
+export default async function TeamPage({ params }: { params: Promise<{ kode: string }> }) {
+  const { kode } = await params;
+  const teamCode = kode.toUpperCase();
 
   // Find team and its group
   let teamData = null;

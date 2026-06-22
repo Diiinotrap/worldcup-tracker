@@ -9,16 +9,18 @@ import {
 } from "../../lib/data";
 import ProbabilityBar from "../../components/ProbabilityBar";
 
-export function generateMetadata({ params }: { params: { id: string } }) {
-  const groupId = params.id.toUpperCase();
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const groupId = id.toUpperCase();
   return {
     title: `Grup ${groupId} — World Cup 2026 Tracker`,
     description: `Klasemen, skor, dan jadwal lengkap untuk Grup ${groupId} di FIFA World Cup 2026.`,
   };
 }
 
-export default function GroupPage({ params }: { params: { id: string } }) {
-  const groupId = params.id.toUpperCase();
+export default async function GroupPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const groupId = id.toUpperCase();
 
   // Find group data
   const group = groups.find((g) => g.name.replace("Group ", "") === groupId);
