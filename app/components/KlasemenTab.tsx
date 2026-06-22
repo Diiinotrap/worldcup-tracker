@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { groups } from "../lib/data";
 
 const groupLabels = ["Semua", ...groups.map((g) => g.name.replace("Group ", ""))];
@@ -44,9 +45,14 @@ export default function KlasemenTab() {
           >
             {/* Group Header */}
             <div className="px-4 py-3 border-b border-border flex items-center justify-between bg-surface/50">
-              <h3 className="text-sm font-bold">
-                <span className="text-accent mr-1">⬡</span> {group.name}
-              </h3>
+              <Link href={`/grup/${group.name.replace("Group ", "")}`} className="hover:text-accent transition-colors">
+                <h3 className="text-sm font-bold flex items-center gap-1.5">
+                  <span className="text-accent">⬡</span> {group.name}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 ml-1">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </h3>
+              </Link>
               <span className="text-[0.6rem] text-muted uppercase tracking-wider">
                 {group.teams[0].played > 0
                   ? `MD${group.teams[0].played}`
