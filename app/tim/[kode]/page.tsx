@@ -6,6 +6,7 @@ import {
   todayMatches,
   upcomingMatches,
   formatDate,
+  squads,
 } from "../../lib/data";
 import ProbabilityBar from "../../components/ProbabilityBar";
 
@@ -70,6 +71,7 @@ export default async function TeamPage({ params }: { params: Promise<{ kode: str
   );
 
   const pendingMatches = [...teamToday, ...teamUpcoming];
+  const teamSquad = squads.find((s) => s.kode === teamCode);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground animate-fade-in">
@@ -102,6 +104,11 @@ export default async function TeamPage({ params }: { params: Promise<{ kode: str
               <h1 className="text-xl sm:text-2xl font-bold tracking-tight">
                 {teamData.name} <span className="text-muted text-base ml-1">{teamData.code}</span>
               </h1>
+              {teamSquad && (
+                <p className="text-xs text-muted mt-1">
+                  Pelatih: <span className="font-semibold text-foreground">{teamSquad.staff.pelatih}</span>
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -156,7 +163,6 @@ export default async function TeamPage({ params }: { params: Promise<{ kode: str
                   </div>
                 ))}
                 
-                {/* Poin Kotak Khusus */}
                 <div className="col-span-3 sm:col-span-1 bg-accent-glow border border-accent/30 rounded-xl p-3 flex flex-col items-center justify-center text-center">
                   <span className="text-2xl font-bold text-accent">
                     {teamData.points}
@@ -166,6 +172,48 @@ export default async function TeamPage({ params }: { params: Promise<{ kode: str
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Skuad Tim */}
+        <section className="animate-slide-up delay-200">
+          <h2 className="text-xl font-bold mb-4">Skuad Resmi</h2>
+          {teamSquad ? (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { title: "Kiper", poses: ["GK"] },
+                { title: "Bertahan", poses: ["CB", "LB", "RB"] },
+                { title: "Gelandang", poses: ["DM", "CM", "AM"] },
+                { title: "Penyerang", poses: ["LW", "RW", "ST"] },
+              ].map((group) => {
+                const players = teamSquad.pemain.filter((p) => group.poses.includes(p.posisi));
+                if (players.length === 0) return null;
+                return (
+                  <div key={group.title} className="glass-card p-4">
+                    <h3 className="text-xs font-bold text-accent uppercase tracking-widest mb-3 pb-2 border-b border-border/50">
+                      {group.title}
+                    </h3>
+                    <ul className="space-y-3">
+                      {players.map((p) => (
+                        <li key={p.nama} className="flex items-start gap-3">
+                          <span className="text-xs font-mono font-bold text-muted w-5 text-right pt-0.5 shrink-0">
+                            {p.nomorPunggung}
+                          </span>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-semibold truncate leading-tight">{p.nama}</p>
+                            <p className="text-[0.65rem] text-muted truncate mt-0.5">{p.klub}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="glass-card p-6 text-center text-muted text-sm border-dashed">
+              Data skuad belum tersedia
+            </div>
+          )}
         </section>
 
         {/* Jadwal Mendatang */}

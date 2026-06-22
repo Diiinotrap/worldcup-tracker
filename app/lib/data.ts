@@ -350,3 +350,314 @@ export function formatDate(dateStr: string): string {
 export function getGroupLetter(groupName: string): string {
   return groupName.replace("Group ", "");
 }
+
+
+export interface Player {
+  nama: string;
+  posisi: 'GK' | 'CB' | 'LB' | 'RB' | 'DM' | 'CM' | 'AM' | 'LW' | 'RW' | 'ST';
+  klub: string;
+  nomorPunggung: number;
+}
+
+export interface Staff {
+  pelatih: string;
+  asisten: string;
+}
+
+export interface TeamSquad {
+  kode: string;
+  staff: Staff;
+  pemain: Player[];
+}
+
+export const squads: TeamSquad[] = [
+  {
+    kode: 'ARG',
+    staff: { pelatih: 'Lionel Scaloni', asisten: 'Pablo Aimar' },
+    pemain: [
+      { nama: 'Emiliano Martínez', posisi: 'GK', klub: 'Aston Villa', nomorPunggung: 23 },
+      { nama: 'Cristian Romero', posisi: 'CB', klub: 'Tottenham Hotspur', nomorPunggung: 13 },
+      { nama: 'Lisandro Martínez', posisi: 'CB', klub: 'Manchester United', nomorPunggung: 25 },
+      { nama: 'Nahuel Molina', posisi: 'RB', klub: 'Atlético Madrid', nomorPunggung: 26 },
+      { nama: 'Nicolás Tagliafico', posisi: 'LB', klub: 'Lyon', nomorPunggung: 3 },
+      { nama: 'Enzo Fernández', posisi: 'CM', klub: 'Chelsea', nomorPunggung: 24 },
+      { nama: 'Alexis Mac Allister', posisi: 'CM', klub: 'Liverpool', nomorPunggung: 20 },
+      { nama: 'Rodrigo De Paul', posisi: 'CM', klub: 'Atlético Madrid', nomorPunggung: 7 },
+      { nama: 'Lionel Messi', posisi: 'RW', klub: 'Inter Miami', nomorPunggung: 10 },
+      { nama: 'Julián Álvarez', posisi: 'ST', klub: 'Manchester City', nomorPunggung: 9 },
+      { nama: 'Lautaro Martínez', posisi: 'ST', klub: 'Inter Milan', nomorPunggung: 22 }
+    ]
+  },
+  {
+    kode: 'FRA',
+    staff: { pelatih: 'Didier Deschamps', asisten: 'Guy Stéphan' },
+    pemain: [
+      { nama: 'Mike Maignan', posisi: 'GK', klub: 'AC Milan', nomorPunggung: 16 },
+      { nama: 'Dayot Upamecano', posisi: 'CB', klub: 'Bayern Munich', nomorPunggung: 4 },
+      { nama: 'William Saliba', posisi: 'CB', klub: 'Arsenal', nomorPunggung: 17 },
+      { nama: 'Jules Koundé', posisi: 'RB', klub: 'Barcelona', nomorPunggung: 5 },
+      { nama: 'Theo Hernández', posisi: 'LB', klub: 'AC Milan', nomorPunggung: 22 },
+      { nama: 'Aurélien Tchouaméni', posisi: 'DM', klub: 'Real Madrid', nomorPunggung: 8 },
+      { nama: 'Eduardo Camavinga', posisi: 'CM', klub: 'Real Madrid', nomorPunggung: 6 },
+      { nama: 'Antoine Griezmann', posisi: 'AM', klub: 'Atlético Madrid', nomorPunggung: 7 },
+      { nama: 'Kylian Mbappé', posisi: 'LW', klub: 'Real Madrid', nomorPunggung: 10 },
+      { nama: 'Ousmane Dembélé', posisi: 'RW', klub: 'Paris Saint-Germain', nomorPunggung: 11 },
+      { nama: 'Marcus Thuram', posisi: 'ST', klub: 'Inter Milan', nomorPunggung: 9 }
+    ]
+  },
+  {
+    kode: 'BRA',
+    staff: { pelatih: 'Dorival Júnior', asisten: 'Lucas Silvestre' },
+    pemain: [
+      { nama: 'Alisson', posisi: 'GK', klub: 'Liverpool', nomorPunggung: 1 },
+      { nama: 'Marquinhos', posisi: 'CB', klub: 'Paris Saint-Germain', nomorPunggung: 4 },
+      { nama: 'Éder Militão', posisi: 'CB', klub: 'Real Madrid', nomorPunggung: 3 },
+      { nama: 'Danilo', posisi: 'RB', klub: 'Juventus', nomorPunggung: 2 },
+      { nama: 'Wendell', posisi: 'LB', klub: 'Porto', nomorPunggung: 6 },
+      { nama: 'Bruno Guimarães', posisi: 'CM', klub: 'Newcastle United', nomorPunggung: 8 },
+      { nama: 'Lucas Paquetá', posisi: 'AM', klub: 'West Ham United', nomorPunggung: 10 },
+      { nama: 'Vinícius Júnior', posisi: 'LW', klub: 'Real Madrid', nomorPunggung: 7 },
+      { nama: 'Rodrygo', posisi: 'RW', klub: 'Real Madrid', nomorPunggung: 11 },
+      { nama: 'Endrick', posisi: 'ST', klub: 'Real Madrid', nomorPunggung: 9 },
+      { nama: 'Raphinha', posisi: 'RW', klub: 'Barcelona', nomorPunggung: 19 }
+    ]
+  },
+  {
+    kode: 'ESP',
+    staff: { pelatih: 'Luis de la Fuente', asisten: 'Pablo Amo' },
+    pemain: [
+      { nama: 'Unai Simón', posisi: 'GK', klub: 'Athletic Bilbao', nomorPunggung: 23 },
+      { nama: 'Aymeric Laporte', posisi: 'CB', klub: 'Al Nassr', nomorPunggung: 14 },
+      { nama: 'Robin Le Normand', posisi: 'CB', klub: 'Real Sociedad', nomorPunggung: 3 },
+      { nama: 'Dani Carvajal', posisi: 'RB', klub: 'Real Madrid', nomorPunggung: 2 },
+      { nama: 'Marc Cucurella', posisi: 'LB', klub: 'Chelsea', nomorPunggung: 24 },
+      { nama: 'Rodri', posisi: 'DM', klub: 'Manchester City', nomorPunggung: 16 },
+      { nama: 'Pedri', posisi: 'CM', klub: 'Barcelona', nomorPunggung: 20 },
+      { nama: 'Fabián Ruiz', posisi: 'CM', klub: 'Paris Saint-Germain', nomorPunggung: 8 },
+      { nama: 'Lamine Yamal', posisi: 'RW', klub: 'Barcelona', nomorPunggung: 19 },
+      { nama: 'Nico Williams', posisi: 'LW', klub: 'Athletic Bilbao', nomorPunggung: 17 },
+      { nama: 'Álvaro Morata', posisi: 'ST', klub: 'Atlético Madrid', nomorPunggung: 7 }
+    ]
+  },
+  {
+    kode: 'GER',
+    staff: { pelatih: 'Julian Nagelsmann', asisten: 'Sandro Wagner' },
+    pemain: [
+      { nama: 'Marc-André ter Stegen', posisi: 'GK', klub: 'Barcelona', nomorPunggung: 1 },
+      { nama: 'Antonio Rüdiger', posisi: 'CB', klub: 'Real Madrid', nomorPunggung: 2 },
+      { nama: 'Jonathan Tah', posisi: 'CB', klub: 'Bayer Leverkusen', nomorPunggung: 4 },
+      { nama: 'Joshua Kimmich', posisi: 'RB', klub: 'Bayern Munich', nomorPunggung: 6 },
+      { nama: 'Maximilian Mittelstädt', posisi: 'LB', klub: 'VfB Stuttgart', nomorPunggung: 18 },
+      { nama: 'Toni Kroos', posisi: 'CM', klub: 'Real Madrid', nomorPunggung: 8 },
+      { nama: 'Ilkay Gündogan', posisi: 'CM', klub: 'Barcelona', nomorPunggung: 21 },
+      { nama: 'Florian Wirtz', posisi: 'AM', klub: 'Bayer Leverkusen', nomorPunggung: 17 },
+      { nama: 'Jamal Musiala', posisi: 'AM', klub: 'Bayern Munich', nomorPunggung: 10 },
+      { nama: 'Kai Havertz', posisi: 'ST', klub: 'Arsenal', nomorPunggung: 7 },
+      { nama: 'Niclas Füllkrug', posisi: 'ST', klub: 'Borussia Dortmund', nomorPunggung: 9 }
+    ]
+  },
+  {
+    kode: 'ENG',
+    staff: { pelatih: 'Gareth Southgate', asisten: 'Steve Holland' },
+    pemain: [
+      { nama: 'Jordan Pickford', posisi: 'GK', klub: 'Everton', nomorPunggung: 1 },
+      { nama: 'John Stones', posisi: 'CB', klub: 'Manchester City', nomorPunggung: 5 },
+      { nama: 'Marc Guéhi', posisi: 'CB', klub: 'Crystal Palace', nomorPunggung: 6 },
+      { nama: 'Kyle Walker', posisi: 'RB', klub: 'Manchester City', nomorPunggung: 2 },
+      { nama: 'Kieran Trippier', posisi: 'LB', klub: 'Newcastle United', nomorPunggung: 12 },
+      { nama: 'Declan Rice', posisi: 'DM', klub: 'Arsenal', nomorPunggung: 4 },
+      { nama: 'Jude Bellingham', posisi: 'AM', klub: 'Real Madrid', nomorPunggung: 10 },
+      { nama: 'Phil Foden', posisi: 'AM', klub: 'Manchester City', nomorPunggung: 11 },
+      { nama: 'Bukayo Saka', posisi: 'RW', klub: 'Arsenal', nomorPunggung: 7 },
+      { nama: 'Anthony Gordon', posisi: 'LW', klub: 'Newcastle United', nomorPunggung: 18 },
+      { nama: 'Harry Kane', posisi: 'ST', klub: 'Bayern Munich', nomorPunggung: 9 }
+    ]
+  },
+  {
+    kode: 'POR',
+    staff: { pelatih: 'Roberto Martínez', asisten: 'Anthony Barry' },
+    pemain: [
+      { nama: 'Diogo Costa', posisi: 'GK', klub: 'Porto', nomorPunggung: 22 },
+      { nama: 'Rúben Dias', posisi: 'CB', klub: 'Manchester City', nomorPunggung: 4 },
+      { nama: 'Pepe', posisi: 'CB', klub: 'Porto', nomorPunggung: 3 },
+      { nama: 'João Cancelo', posisi: 'RB', klub: 'Barcelona', nomorPunggung: 20 },
+      { nama: 'Nuno Mendes', posisi: 'LB', klub: 'Paris Saint-Germain', nomorPunggung: 19 },
+      { nama: 'João Palhinha', posisi: 'DM', klub: 'Fulham', nomorPunggung: 6 },
+      { nama: 'Vitinha', posisi: 'CM', klub: 'Paris Saint-Germain', nomorPunggung: 23 },
+      { nama: 'Bruno Fernandes', posisi: 'AM', klub: 'Manchester United', nomorPunggung: 8 },
+      { nama: 'Bernardo Silva', posisi: 'RW', klub: 'Manchester City', nomorPunggung: 10 },
+      { nama: 'Rafael Leão', posisi: 'LW', klub: 'AC Milan', nomorPunggung: 17 },
+      { nama: 'Cristiano Ronaldo', posisi: 'ST', klub: 'Al Nassr', nomorPunggung: 7 }
+    ]
+  },
+  {
+    kode: 'NED',
+    staff: { pelatih: 'Ronald Koeman', asisten: 'Erwin Koeman' },
+    pemain: [
+      { nama: 'Bart Verbruggen', posisi: 'GK', klub: 'Brighton', nomorPunggung: 1 },
+      { nama: 'Virgil van Dijk', posisi: 'CB', klub: 'Liverpool', nomorPunggung: 4 },
+      { nama: 'Nathan Aké', posisi: 'CB', klub: 'Manchester City', nomorPunggung: 5 },
+      { nama: 'Denzel Dumfries', posisi: 'RB', klub: 'Inter Milan', nomorPunggung: 22 },
+      { nama: 'Ian Maatsen', posisi: 'LB', klub: 'Borussia Dortmund', nomorPunggung: 12 },
+      { nama: 'Tijjani Reijnders', posisi: 'CM', klub: 'AC Milan', nomorPunggung: 14 },
+      { nama: 'Jerdy Schouten', posisi: 'CM', klub: 'PSV Eindhoven', nomorPunggung: 24 },
+      { nama: 'Xavi Simons', posisi: 'AM', klub: 'RB Leipzig', nomorPunggung: 7 },
+      { nama: 'Cody Gakpo', posisi: 'LW', klub: 'Liverpool', nomorPunggung: 11 },
+      { nama: 'Donyell Malen', posisi: 'RW', klub: 'Borussia Dortmund', nomorPunggung: 18 },
+      { nama: 'Memphis Depay', posisi: 'ST', klub: 'Atlético Madrid', nomorPunggung: 10 }
+    ]
+  },
+  {
+    kode: 'JPN',
+    staff: { pelatih: 'Hajime Moriyasu', asisten: 'Hiroshi Nanami' },
+    pemain: [
+      { nama: 'Zion Suzuki', posisi: 'GK', klub: 'Sint-Truiden', nomorPunggung: 23 },
+      { nama: 'Takehiro Tomiyasu', posisi: 'CB', klub: 'Arsenal', nomorPunggung: 16 },
+      { nama: 'Ko Itakura', posisi: 'CB', klub: 'Borussia Mönchengladbach', nomorPunggung: 4 },
+      { nama: 'Yukinari Sugawara', posisi: 'RB', klub: 'AZ Alkmaar', nomorPunggung: 2 },
+      { nama: 'Hiroki Ito', posisi: 'LB', klub: 'VfB Stuttgart', nomorPunggung: 21 },
+      { nama: 'Wataru Endo', posisi: 'DM', klub: 'Liverpool', nomorPunggung: 6 },
+      { nama: 'Hidemasa Morita', posisi: 'CM', klub: 'Sporting CP', nomorPunggung: 5 },
+      { nama: 'Takefusa Kubo', posisi: 'RW', klub: 'Real Sociedad', nomorPunggung: 20 },
+      { nama: 'Kaoru Mitoma', posisi: 'LW', klub: 'Brighton', nomorPunggung: 7 },
+      { nama: 'Daichi Kamada', posisi: 'AM', klub: 'Lazio', nomorPunggung: 8 },
+      { nama: 'Ayase Ueda', posisi: 'ST', klub: 'Feyenoord', nomorPunggung: 9 }
+    ]
+  },
+  {
+    kode: 'NOR',
+    staff: { pelatih: 'Ståle Solbakken', asisten: 'Brede Hangeland' },
+    pemain: [
+      { nama: 'Ørjan Nyland', posisi: 'GK', klub: 'Sevilla', nomorPunggung: 1 },
+      { nama: 'Leo Østigård', posisi: 'CB', klub: 'Napoli', nomorPunggung: 4 },
+      { nama: 'Kristoffer Ajer', posisi: 'CB', klub: 'Brentford', nomorPunggung: 3 },
+      { nama: 'Julian Ryerson', posisi: 'RB', klub: 'Borussia Dortmund', nomorPunggung: 14 },
+      { nama: 'David Møller Wolfe', posisi: 'LB', klub: 'AZ Alkmaar', nomorPunggung: 5 },
+      { nama: 'Sander Berge', posisi: 'DM', klub: 'Burnley', nomorPunggung: 8 },
+      { nama: 'Martin Ødegaard', posisi: 'AM', klub: 'Arsenal', nomorPunggung: 10 },
+      { nama: 'Oscar Bobb', posisi: 'RW', klub: 'Manchester City', nomorPunggung: 22 },
+      { nama: 'Antonio Nusa', posisi: 'LW', klub: 'Club Brugge', nomorPunggung: 20 },
+      { nama: 'Erling Haaland', posisi: 'ST', klub: 'Manchester City', nomorPunggung: 9 },
+      { nama: 'Alexander Sørloth', posisi: 'ST', klub: 'Villarreal', nomorPunggung: 19 }
+    ]
+  },
+  {
+    kode: 'AUT',
+    staff: { pelatih: 'Ralf Rangnick', asisten: 'Peter Perchtold' },
+    pemain: [
+      { nama: 'Patrick Pentz', posisi: 'GK', klub: 'Brøndby', nomorPunggung: 13 },
+      { nama: 'Kevin Danso', posisi: 'CB', klub: 'Lens', nomorPunggung: 4 },
+      { nama: 'Philipp Lienhart', posisi: 'CB', klub: 'Freiburg', nomorPunggung: 15 },
+      { nama: 'Stefan Posch', posisi: 'RB', klub: 'Bologna', nomorPunggung: 5 },
+      { nama: 'Phillipp Mwene', posisi: 'LB', klub: 'Mainz 05', nomorPunggung: 16 },
+      { nama: 'Nicolas Seiwald', posisi: 'CM', klub: 'RB Leipzig', nomorPunggung: 6 },
+      { nama: 'Marcel Sabitzer', posisi: 'CM', klub: 'Borussia Dortmund', nomorPunggung: 9 },
+      { nama: 'Christoph Baumgartner', posisi: 'AM', klub: 'RB Leipzig', nomorPunggung: 19 },
+      { nama: 'Konrad Laimer', posisi: 'RW', klub: 'Bayern Munich', nomorPunggung: 20 },
+      { nama: 'Romano Schmid', posisi: 'LW', klub: 'Werder Bremen', nomorPunggung: 18 },
+      { nama: 'Michael Gregoritsch', posisi: 'ST', klub: 'Freiburg', nomorPunggung: 11 }
+    ]
+  },
+  {
+    kode: 'SEN',
+    staff: { pelatih: 'Aliou Cissé', asisten: 'Régis Bogaert' },
+    pemain: [
+      { nama: 'Édouard Mendy', posisi: 'GK', klub: 'Al-Ahli', nomorPunggung: 16 },
+      { nama: 'Kalidou Koulibaly', posisi: 'CB', klub: 'Al-Hilal', nomorPunggung: 3 },
+      { nama: 'Abdou Diallo', posisi: 'CB', klub: 'Al-Arabi', nomorPunggung: 22 },
+      { nama: 'Krépin Diatta', posisi: 'RB', klub: 'Monaco', nomorPunggung: 15 },
+      { nama: 'Ismail Jakobs', posisi: 'LB', klub: 'Monaco', nomorPunggung: 14 },
+      { nama: 'Pape Matar Sarr', posisi: 'CM', klub: 'Tottenham Hotspur', nomorPunggung: 17 },
+      { nama: 'Idrissa Gueye', posisi: 'CM', klub: 'Everton', nomorPunggung: 5 },
+      { nama: 'Lamine Camara', posisi: 'AM', klub: 'Metz', nomorPunggung: 25 },
+      { nama: 'Sadio Mané', posisi: 'LW', klub: 'Al-Nassr', nomorPunggung: 10 },
+      { nama: 'Ismaïla Sarr', posisi: 'RW', klub: 'Marseille', nomorPunggung: 18 },
+      { nama: 'Nicolas Jackson', posisi: 'ST', klub: 'Chelsea', nomorPunggung: 7 }
+    ]
+  },
+  {
+    kode: 'IRQ',
+    staff: { pelatih: 'Jesús Casas', asisten: 'Alejandro Varela' },
+    pemain: [
+      { nama: 'Jalal Hassan', posisi: 'GK', klub: 'Al-Zawraa', nomorPunggung: 12 },
+      { nama: 'Rebin Sulaka', posisi: 'CB', klub: 'FC Seoul', nomorPunggung: 2 },
+      { nama: 'Saad Natiq', posisi: 'CB', klub: 'Al-Quwa Al-Jawiya', nomorPunggung: 4 },
+      { nama: 'Hussein Ali', posisi: 'RB', klub: 'Heerenveen', nomorPunggung: 3 },
+      { nama: 'Merchas Doski', posisi: 'LB', klub: 'Slovácko', nomorPunggung: 23 },
+      { nama: 'Osama Rashid', posisi: 'CM', klub: 'Vizela', nomorPunggung: 20 },
+      { nama: 'Amir Al-Ammari', posisi: 'CM', klub: 'Halmstads BK', nomorPunggung: 16 },
+      { nama: 'Zidane Iqbal', posisi: 'AM', klub: 'FC Utrecht', nomorPunggung: 11 },
+      { nama: 'Ali Jasim', posisi: 'LW', klub: 'Al-Quwa Al-Jawiya', nomorPunggung: 17 },
+      { nama: 'Ibrahim Bayesh', posisi: 'RW', klub: 'Al-Quwa Al-Jawiya', nomorPunggung: 8 },
+      { nama: 'Aymen Hussein', posisi: 'ST', klub: 'Al-Quwa Al-Jawiya', nomorPunggung: 18 }
+    ]
+  },
+  {
+    kode: 'JOR',
+    staff: { pelatih: 'Hussein Ammouta', asisten: 'Mustafa Khalfi' },
+    pemain: [
+      { nama: 'Yazeed Abulaila', posisi: 'GK', klub: 'Al-Jabalain', nomorPunggung: 1 },
+      { nama: 'Yazan Al-Arab', posisi: 'CB', klub: 'Muaither', nomorPunggung: 5 },
+      { nama: 'Abdallah Nasib', posisi: 'CB', klub: 'Al-Hussein', nomorPunggung: 3 },
+      { nama: 'Ihsan Haddad', posisi: 'RB', klub: 'Al-Faisaly', nomorPunggung: 23 },
+      { nama: 'Salem Al-Ajalin', posisi: 'LB', klub: 'Al-Faisaly', nomorPunggung: 17 },
+      { nama: 'Nizar Al-Rashdan', posisi: 'CM', klub: 'Emirates Club', nomorPunggung: 21 },
+      { nama: 'Noor Al-Rawabdeh', posisi: 'CM', klub: 'Selangor', nomorPunggung: 8 },
+      { nama: 'Mahmoud Al-Mardi', posisi: 'LW', klub: 'Al-Hussein', nomorPunggung: 13 },
+      { nama: 'Musa Al-Taamari', posisi: 'RW', klub: 'Montpellier', nomorPunggung: 10 },
+      { nama: 'Ali Olwan', posisi: 'AM', klub: 'Al-Shamal', nomorPunggung: 9 },
+      { nama: 'Yazan Al-Naimat', posisi: 'ST', klub: 'Al-Ahli', nomorPunggung: 11 }
+    ]
+  },
+  {
+    kode: 'DZA',
+    staff: { pelatih: 'Vladimir Petković', asisten: 'David Morandi' },
+    pemain: [
+      { nama: 'Anthony Mandrea', posisi: 'GK', klub: 'Caen', nomorPunggung: 16 },
+      { nama: 'Ramy Bensebaini', posisi: 'CB', klub: 'Borussia Dortmund', nomorPunggung: 21 },
+      { nama: 'Aïssa Mandi', posisi: 'CB', klub: 'Villarreal', nomorPunggung: 2 },
+      { nama: 'Youcef Atal', posisi: 'RB', klub: 'Adana Demirspor', nomorPunggung: 20 },
+      { nama: 'Rayan Aït-Nouri', posisi: 'LB', klub: 'Wolverhampton', nomorPunggung: 15 },
+      { nama: 'Nabil Bentaleb', posisi: 'CM', klub: 'Lille', nomorPunggung: 19 },
+      { nama: 'Ismaël Bennacer', posisi: 'CM', klub: 'AC Milan', nomorPunggung: 22 },
+      { nama: 'Houssem Aouar', posisi: 'AM', klub: 'Roma', nomorPunggung: 8 },
+      { nama: 'Riyad Mahrez', posisi: 'RW', klub: 'Al-Ahli', nomorPunggung: 7 },
+      { nama: 'Said Benrahma', posisi: 'LW', klub: 'Lyon', nomorPunggung: 10 },
+      { nama: 'Baghdad Bounedjah', posisi: 'ST', klub: 'Al-Sadd', nomorPunggung: 9 }
+    ]
+  },
+  {
+    kode: 'URU',
+    staff: { pelatih: 'Marcelo Bielsa', asisten: 'Diego Reyes' },
+    pemain: [
+      { nama: 'Sergio Rochet', posisi: 'GK', klub: 'Internacional', nomorPunggung: 1 },
+      { nama: 'Ronald Araújo', posisi: 'CB', klub: 'Barcelona', nomorPunggung: 4 },
+      { nama: 'José María Giménez', posisi: 'CB', klub: 'Atlético Madrid', nomorPunggung: 2 },
+      { nama: 'Nahitan Nández', posisi: 'RB', klub: 'Al-Qadsiah', nomorPunggung: 8 },
+      { nama: 'Mathías Olivera', posisi: 'LB', klub: 'Napoli', nomorPunggung: 16 },
+      { nama: 'Federico Valverde', posisi: 'CM', klub: 'Real Madrid', nomorPunggung: 15 },
+      { nama: 'Manuel Ugarte', posisi: 'DM', klub: 'Paris Saint-Germain', nomorPunggung: 5 },
+      { nama: 'Nicolás de la Cruz', posisi: 'AM', klub: 'Flamengo', nomorPunggung: 7 },
+      { nama: 'Facundo Pellistri', posisi: 'RW', klub: 'Granada', nomorPunggung: 11 },
+      { nama: 'Maximiliano Araújo', posisi: 'LW', klub: 'Toluca', nomorPunggung: 20 },
+      { nama: 'Darwin Núñez', posisi: 'ST', klub: 'Liverpool', nomorPunggung: 19 }
+    ]
+  },
+  {
+    kode: 'COL',
+    staff: { pelatih: 'Néstor Lorenzo', asisten: 'Amaranto Perea' },
+    pemain: [
+      { nama: 'Camilo Vargas', posisi: 'GK', klub: 'Atlas', nomorPunggung: 12 },
+      { nama: 'Yerry Mina', posisi: 'CB', klub: 'Cagliari', nomorPunggung: 13 },
+      { nama: 'Davinson Sánchez', posisi: 'CB', klub: 'Galatasaray', nomorPunggung: 23 },
+      { nama: 'Daniel Muñoz', posisi: 'RB', klub: 'Crystal Palace', nomorPunggung: 21 },
+      { nama: 'Johan Mojica', posisi: 'LB', klub: 'Osasuna', nomorPunggung: 17 },
+      { nama: 'Jefferson Lerma', posisi: 'DM', klub: 'Crystal Palace', nomorPunggung: 16 },
+      { nama: 'Richard Ríos', posisi: 'CM', klub: 'Palmeiras', nomorPunggung: 6 },
+      { nama: 'James Rodríguez', posisi: 'AM', klub: 'São Paulo', nomorPunggung: 10 },
+      { nama: 'Jhon Arias', posisi: 'RW', klub: 'Fluminense', nomorPunggung: 11 },
+      { nama: 'Luis Díaz', posisi: 'LW', klub: 'Liverpool', nomorPunggung: 7 },
+      { nama: 'Rafael Santos Borré', posisi: 'ST', klub: 'Internacional', nomorPunggung: 19 }
+    ]
+  }
+];
